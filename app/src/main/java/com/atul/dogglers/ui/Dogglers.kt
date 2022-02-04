@@ -11,7 +11,6 @@ import com.atul.dogglers.const.Layout
 import com.atul.dogglers.data.Datasource
 import com.atul.dogglers.databinding.ActivityDogglersBinding
 import com.atul.dogglers.model.Dog
-import java.util.*
 
 class Dogglers : AppCompatActivity() {
     private lateinit var binding: ActivityDogglersBinding
@@ -25,7 +24,8 @@ class Dogglers : AppCompatActivity() {
         val layoutType: Int = intent.getIntExtra("layout", 1)
         // get and shuffle the static data
         val dataSet: List<Dog> =
-            Datasource.getData().shuffled(random = Random())
+            Datasource.getData()
+        //.shuffled(random = Random())
 
         // pass data to adapter
         setLayoutOnBasisOfSelection(layoutType, dataSet)

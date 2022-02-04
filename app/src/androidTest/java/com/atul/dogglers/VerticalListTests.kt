@@ -17,24 +17,19 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 @SmallTest
-class GridListTests : BaseTest() {
+class VerticalListTests : BaseTest() {
 
     @get:Rule
-    var activityRule: ActivityScenarioRule<Dogglers> =
-        ActivityScenarioRule(Dogglers::class.java)
+    var activityRule: ActivityScenarioRule<Dogglers>
+            = ActivityScenarioRule(Dogglers::class.java)
 
     @Test
-    fun `grid_list_content_at_first_position`() {
+    fun `vertical_scroll_content_at_first_position`() {
         checkFirstPosition()
     }
 
     @Test
-    fun `grid_list_content_on_first_page`() {
-        onView(withText("Nox")).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun `grid_list_content_at_last_position`() {
+    fun `vertical_scroll_content_at_last_position`() {
         onView(withId(R.id.recycler_view))
             .perform(scrollToPosition<RecyclerView.ViewHolder>(lastPosition))
         onView(withText("Bella")).check(matches(isDisplayed()))
@@ -44,7 +39,7 @@ class GridListTests : BaseTest() {
     fun `vertical_scrolling`() {
         onView(withId(R.id.recycler_view))
             .perform(swipeUp())
-        onView(withText("Bella")).check(matches(isDisplayed()))
+        onView(withText("Faye")).check(matches(isDisplayed()))
     }
 
     @Test
